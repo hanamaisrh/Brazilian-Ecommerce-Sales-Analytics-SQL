@@ -146,7 +146,7 @@ WHERE order_status = 'delivered';
    git clone https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git
    ```
 2. **Execute SQL Analysis:**
-   * Open `brazilian_ecommerce_sql.ipynb` in Kaggle Notebooks, OR
+   * Open `brazilian-ecommerce-sales-analytics-sql.ipynb` in Kaggle Notebooks, OR
    * Load the [Olist E-Commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) into DuckDB/Kaggle and execute the queries from `queries.sql`.
 3. **View Dashboard:**
    * Open `Brazilian_Ecommerce_Dashboard.xlsx` in Microsoft Excel to view formatted KPI cards and charts, or view `dashboard-preview.png`.
