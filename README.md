@@ -142,7 +142,7 @@ WHERE order_status = 'delivered';
 ## 📁 Repository Structure
 ```text
 ├── Brazilian_Ecommerce_Dashboard.xlsx    # Formatted Excel Dashboard & Charts
-├── brazilian_ecommerce_sql.ipynb         # Interactive Kaggle Notebook execution
+├── brazilian-ecommerce-sales-analytics-sql.ipynb         # Interactive Kaggle Notebook execution
 ├── queries.sql                           # Full standalone SQL script
 ├── dashboard-preview.png                 # High-resolution dashboard screenshot
 └── README.md                             # Executive Project Documentation
