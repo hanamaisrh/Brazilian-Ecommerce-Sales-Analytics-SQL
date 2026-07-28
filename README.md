@@ -141,17 +141,18 @@ WHERE order_status = 'delivered';
 
 ## 📁 Repository Structure
 ```text
-├── Brazilian_Ecommerce_Dashboard.xlsx    # Formatted Excel Dashboard & Charts
-├── brazilian-ecommerce-sales-analytics-sql.ipynb         # Interactive Kaggle Notebook execution
-├── queries.sql                           # Full standalone SQL script
-├── dashboard-preview.png                 # High-resolution dashboard screenshot
-└── README.md                             # Executive Project Documentation
+├── Brazilian_Ecommerce_Dashboard.xlsx              # Formatted Excel Dashboard & Charts
+├── brazilian-ecommerce-sales-analytics-sql.ipynb   # Interactive Kaggle Notebook execution
+├── queries.sql                                     # Full standalone SQL script
+├── dashboard-preview.png                           # High-resolution dashboard screenshot
+└── README.md                                       # Executive Project Documentation
 ```
 
 ---
 
 ## 👩‍💻 Author & Contact
-**Hana Maisarah** — *Data Analyst*
+**Hana Maisarah** 
+*Data Analyst Portfolio Project*
 * **LinkedIn:** [Hana Maisarah](https://www.linkedin.com/in/hana-maisarah-309a33294/)
 * **Email:** hanamaisarah2004@gmail.com
 
