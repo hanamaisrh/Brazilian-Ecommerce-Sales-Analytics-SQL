@@ -1,4 +1,4 @@
-# 🛒 Brazilian E-Commerce Sales Analytics (SQL + Excel)
+# 🛒 Brazilian E-Commerce Sales & Logistics Analytics
 > **An end-to-end data analytics project leveraging DuckDB SQL for complex data extraction & transformation, and Microsoft Excel for executive dashboard visualization.**
 
 ## 📌 Executive Summary
