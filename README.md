@@ -27,28 +27,28 @@ Key findings and business recommendations are extracted to help marketplace oper
 
 ## 📊 Business Questions & SQL Analysis
 
-### 🟢 1. Overall Revenue & Order Volume
+### 1. Overall Revenue & Order Volume
 **Business Question:** What is the total revenue generated and the total volume of distinct orders on the platform?
 
 ```sql
 SELECT 
     COUNT(DISTINCT order_id) AS total_orders,
     ROUND(SUM(price), 2) AS total_revenue
-FROM '/kaggle/input/brazilian-ecommerce/olist_order_items_dataset.csv';
+FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_items_dataset.csv';
 ```
 * **Key Finding:** Generated over **$13.5M+ in revenue** across **98,000+ distinct orders**.
 
 ---
 
-### 🟢 2. Top 5 Revenue-Generating Product Categories
+### 2. Top 5 Revenue-Generating Product Categories
 **Business Question:** Which product categories contribute the most to the platform's overall revenue?
 
 ```sql
 SELECT 
     p.product_category_name AS category_name,
     ROUND(SUM(i.price), 2) AS total_revenue
-FROM '/kaggle/input/brazilian-ecommerce/olist_order_items_dataset.csv' i
-JOIN '/kaggle/input/brazilian-ecommerce/olist_products_dataset.csv' p 
+FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_items_dataset.csv' i
+JOIN '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_products_dataset.csv' p 
   ON i.product_id = p.product_id
 WHERE p.product_category_name IS NOT NULL
 GROUP BY category_name
@@ -59,7 +59,7 @@ LIMIT 5;
 
 ---
 
-### 🔵 3. Payment Method Popularity & Average Order Value (AOV)
+### 3. Payment Method Popularity & Average Order Value (AOV)
 **Business Question:** What are the most preferred payment methods, and what is the Average Order Value (AOV) per payment type?
 
 ```sql
@@ -67,7 +67,7 @@ SELECT
     payment_type,
     COUNT(DISTINCT order_id) AS total_orders,
     ROUND(AVG(payment_value), 2) AS avg_order_value
-FROM '/kaggle/input/brazilian-ecommerce/olist_order_payments_dataset.csv'
+FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_payments_dataset.csv'
 GROUP BY payment_type
 ORDER BY total_orders DESC;
 ```
@@ -75,7 +75,7 @@ ORDER BY total_orders DESC;
 
 ---
 
-### 🔴 4. Month-over-Month (MoM) Growth Analysis
+### 4. Month-over-Month (MoM) Growth Analysis
 **Business Question:** How does monthly revenue trend over time, and what is the Month-over-Month (MoM) growth percentage?
 
 ```sql
@@ -83,8 +83,8 @@ WITH monthly_sales AS (
     SELECT 
         DATE_TRUNC('month', CAST(o.order_purchase_timestamp AS TIMESTAMP)) AS month,
         ROUND(SUM(i.price), 2) AS total_revenue
-    FROM '/kaggle/input/brazilian-ecommerce/olist_orders_dataset.csv' o
-    JOIN '/kaggle/input/brazilian-ecommerce/olist_order_items_dataset.csv' i 
+    FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_orders_dataset.csv' o
+    JOIN '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_items_dataset.csv' i 
       ON o.order_id = i.order_id
     WHERE o.order_status = 'delivered'
     GROUP BY month
@@ -101,14 +101,14 @@ ORDER BY month;
 
 ---
 
-### 🔴 5. Delivery Performance & Late Deliveries Rate
+### 5. Delivery Performance & Late Deliveries Rate
 **Business Question:** What is the average order delivery time, and what percentage of orders arrive later than the estimated delivery date?
 
 ```sql
 SELECT 
     ROUND(AVG(DATE_DIFF('day', CAST(order_purchase_timestamp AS TIMESTAMP), CAST(order_delivered_customer_date AS TIMESTAMP))), 1) AS avg_delivery_days,
     ROUND(COUNT(CASE WHEN CAST(order_delivered_customer_date AS TIMESTAMP) > CAST(order_estimated_delivery_date AS TIMESTAMP) THEN 1 END) * 100.0 / COUNT(order_id), 2) AS late_delivery_percentage
-FROM '/kaggle/input/brazilian-ecommerce/olist_orders_dataset.csv'
+FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_orders_dataset.csv'
 WHERE order_status = 'delivered';
 ```
 * **Key Finding:** The average delivery fulfillment cycle takes **12.5 days**, with approximately **6.8%** of orders experiencing shipping delays past estimated dates.
