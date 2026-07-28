@@ -151,9 +151,9 @@ WHERE order_status = 'delivered';
 ---
 
 ## 👩‍💻 Author & Contact
-**Hana Maisarah** 
-*Data Analyst Portfolio Project*
-* **LinkedIn:** [Hana Maisarah](https://www.linkedin.com/in/hana-maisarah-309a33294/)
+**Hana Maisarah**  
+*Data Analyst Portfolio Project*  
+* **LinkedIn:** https://www.linkedin.com/in/hana-maisarah-309a33294/
 * **Email:** hanamaisarah2004@gmail.com
 
 ---
