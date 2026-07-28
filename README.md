@@ -1,4 +1,5 @@
 # 🛒 Brazilian E-Commerce Sales Analytics (SQL + Excel)
+> **An end-to-end data analytics project leveraging DuckDB SQL for complex data extraction & transformation, and Microsoft Excel for executive dashboard visualization.**
 
 ## 📌 Executive Summary
 This project analyzes **100,000+ real-world e-commerce orders** from the Olist marketplace dataset in Brazil using DuckDB SQL and Excel visualizations. The objective is to identify revenue drivers, fulfillment bottlenecks, and customer payment trends.
@@ -137,6 +138,19 @@ WHERE order_status = 'delivered';
 2. **Promote Credit Installments:** Partner with financial institutions for zero-interest installments on high-AOV categories (*Watches & Gifts*, *Health & Beauty*) to sustain transaction volume.
 3. **Targeted Cross-Selling:** Bundle lower-AOV voucher purchases with trending high-value products to boost average shopping cart sizes.
 
+---
+
+## 🚀 How to Run This Project
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git](https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git)
+   ```
+2. **Execute SQL Analysis:**
+   * Open `brazilian_ecommerce_sql.ipynb` in Kaggle Notebooks, OR
+   * Load the [Olist E-Commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) into DuckDB/Kaggle and execute the queries from `queries.sql`.
+3. **View Dashboard:**
+   * Open `Brazilian_Ecommerce_Dashboard.xlsx` in Microsoft Excel to view formatted KPI cards and charts, or view `dashboard-preview.png`.
+  
 ---
 
 ## 📁 Repository Structure
