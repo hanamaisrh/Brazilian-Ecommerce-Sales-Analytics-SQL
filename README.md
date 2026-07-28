@@ -143,7 +143,7 @@ WHERE order_status = 'delivered';
 ## 🚀 How to Run This Project
 1. **Clone the Repository:**
    ```bash
-   git clone [https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git](https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git)
+   git clone https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git
    ```
 2. **Execute SQL Analysis:**
    * Open `brazilian_ecommerce_sql.ipynb` in Kaggle Notebooks, OR
