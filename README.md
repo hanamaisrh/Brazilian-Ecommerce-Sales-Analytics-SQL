@@ -116,7 +116,7 @@ WHERE order_status = 'delivered';
 ## 🚀 How to Run This Project
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/Brazilian-Ecommerce-Sales-Analytics-SQL.git](https://github.com/YOUR_USERNAME/Brazilian-Ecommerce-Sales-Analytics-SQL.git)
+   git clone https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git
    ```
 2. Open the Kaggle Notebook or any DuckDB SQL environment.
 3. Load the Olist E-Commerce dataset files and execute the queries directly.
