@@ -1,34 +1,35 @@
-# 🛒 Brazilian E-Commerce Sales Analytics (SQL)
+# 🛒 Brazilian E-Commerce Sales Analytics (SQL + Excel)
 
 ## 📌 Executive Summary
-This project analyzes **100,000+ real-world e-commerce orders** from the Olist marketplace dataset in Brazil. The objective is to evaluate overall revenue performance, customer purchasing behavior, payment preferences, and logistics delivery efficiency using **Advanced SQL**.
-
-Key findings and business recommendations are extracted to help marketplace operators optimize delivery performance and boost high-value category sales.
+This project analyzes **100,000+ real-world e-commerce orders** from the Olist marketplace dataset in Brazil using DuckDB SQL and Excel visualizations. The objective is to identify revenue drivers, fulfillment bottlenecks, and customer payment trends.
 
 ---
 
-## 🛠️ Tech Stack & Tools
-* **Language:** SQL (ANSI SQL standard)
-* **SQL Engine:** DuckDB (In-memory analytical SQL)
-* **Environment:** Kaggle Notebooks
-* **Dataset:** [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
-
----
-
-## 📂 Repository Structure
+## 🏗️ Project Architecture & Data Pipeline
 
 ```text
-├── brazilian_ecommerce_sql.ipynb  # Interactive Kaggle Notebook with analysis & outputs
-├── queries.sql                    # Clean standalone SQL scripts
-└── README.md                      # Project documentation & business insights
+┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌────────────────┐     ┌─────────────────┐
+│    Raw CSV    │ ──> │    DuckDB     │ ──> │  SQL Queries  │ ──> │ Excel Visuals  │ ──> │    Business     │
+│  (100k+ Rows) │     │ (SQL Engine)  │     │ (CTEs & LAG)  │     │  & Dashboard   │     │ Recommendations │
+└───────────────┘     └───────────────┘     └───────────────┘     └────────────────┘     └─────────────────┘
 ```
 
 ---
 
-## 📊 Business Questions & SQL Analysis
+## 📊 Executive Dashboard Preview
 
-### 1. Overall Revenue & Order Volume
-**Business Question:** What is the total revenue generated and the total volume of distinct orders on the platform?
+![Excel Dashboard Preview](dashboard-preview.png)
+*Figure 1: Executive Excel Dashboard summarizing key SQL query outputs.*
+
+---
+
+## 🔍 Key Insights & Business Questions
+
+### 1. Total Revenue & Order Volume
+* **Key Insight:** Olist generated **$13.59M+ in total revenue** across **98,666 unique delivered orders**, indicating a strong marketplace foundation.
+
+<details>
+<summary>🔍 <b>View SQL Query</b></summary>
 
 ```sql
 SELECT 
@@ -36,12 +37,16 @@ SELECT
     ROUND(SUM(price), 2) AS total_revenue
 FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_items_dataset.csv';
 ```
-* **Key Finding:** Generated over **$13.5M+ in revenue** across **98,000+ distinct orders**.
+</details>
 
 ---
 
-### 2. Top 5 Revenue-Generating Product Categories
-**Business Question:** Which product categories contribute the most to the platform's overall revenue?
+### 2. Top Revenue-Generating Product Categories
+
+* **Key Insight:** **Health & Beauty** ($1.25M) and **Watches & Gifts** ($1.20M) are the top revenue drivers. High-end lifestyle categories consistently outperform everyday goods in sales value.
+
+<details>
+<summary>🔍 <b>View SQL Query</b></summary>
 
 ```sql
 SELECT 
@@ -55,12 +60,16 @@ GROUP BY category_name
 ORDER BY total_revenue DESC
 LIMIT 5;
 ```
-* **Key Finding:** *Beleza e Saude* (Health & Beauty) and *Relogios e Presentes* (Watches & Gifts) lead the marketplace as the highest revenue-generating product segments.
+</details>
 
 ---
 
-### 3. Payment Method Popularity & Average Order Value (AOV)
-**Business Question:** What are the most preferred payment methods, and what is the Average Order Value (AOV) per payment type?
+### 3. Payment Preferences & Average Order Value (AOV)
+
+* **Key Insight:** **Credit Card transactions account for 75% of orders**, yielding the highest Average Order Value (**$163.32**). Voucher users purchase frequently but spend significantly less per order ($65.70 AOV).
+
+<details>
+<summary>🔍 <b>View SQL Query</b></summary>
 
 ```sql
 SELECT 
@@ -71,12 +80,16 @@ FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_ord
 GROUP BY payment_type
 ORDER BY total_orders DESC;
 ```
-* **Key Finding:** **Credit Cards** dominate transaction volume (>75%), while voucher payments yield a lower average transaction value.
+</details>
 
 ---
 
-### 4. Month-over-Month (MoM) Growth Analysis
-**Business Question:** How does monthly revenue trend over time, and what is the Month-over-Month (MoM) growth percentage?
+### 4. Month-over-Month (MoM) Revenue Growth
+
+* **Key Insight:** Following initial launch phases in late 2016, sales grew steadily throughout 2017–2018, peaking exponentially during **Black Friday promotions in November 2017 ($987.7K revenue, +52.37% MoM)**.
+
+<details>
+<summary>🔍 <b>View SQL Query</b></summary>
 
 ```sql
 WITH monthly_sales AS (
@@ -97,12 +110,16 @@ SELECT
 FROM monthly_sales
 ORDER BY month;
 ```
-* **Key Finding:** Sales showed strong upward momentum throughout Q3 and Q4, peaking significantly during annual promotional campaigns (Black Friday).
+</details>
 
 ---
 
-### 5. Delivery Performance & Late Deliveries Rate
-**Business Question:** What is the average order delivery time, and what percentage of orders arrive later than the estimated delivery date?
+### 5. Delivery Performance & Logistics Delays
+
+* **Key Insight:** Average fulfillment takes **12.5 days**, with **8.11% of orders delivered past estimated dates**. Late shipments are heavily concentrated in specific regional logistics hubs.
+
+<details>
+<summary>🔍 <b>View SQL Query</b></summary>
 
 ```sql
 SELECT 
@@ -111,36 +128,32 @@ SELECT
 FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_orders_dataset.csv'
 WHERE order_status = 'delivered';
 ```
-* **Key Finding:** The average delivery fulfillment cycle takes **12.5 days**, with approximately **6.8%** of orders experiencing shipping delays past estimated dates.
+</details>
 
 ---
 
-## 💡 Strategic Business Recommendations
-
-1. **Optimize Supply Chain Logistics:** Partner with localized fulfillment hubs in regions experiencing >7% late delivery rates to reduce fulfillment times and improve customer retention.
-2. **Incentivize Credit Card Installments:** Since credit card purchases drive the highest Average Order Value (AOV), run targeted zero-interest installment promos on top categories (*Health & Beauty*, *Watches*).
-3. **Cross-Selling Strategies:** Bundle products from top-performing categories with lower-performing items to increase overall shopping cart values.
+## 💡 Strategic Recommendations
+1. **Regional Fulfillment Hubs:** Establish local hubs in high-delay regions to reduce the **8.11% late delivery rate** and improve overall fulfillment cycles below the 12.5-day benchmark.
+2. **Promote Credit Installments:** Partner with financial institutions for zero-interest installments on high-AOV categories (*Watches & Gifts*, *Health & Beauty*) to sustain transaction volume.
+3. **Targeted Cross-Selling:** Bundle lower-AOV voucher purchases with trending high-value products to boost average shopping cart sizes.
 
 ---
 
-## 🚀 How to Run This Project
-1. Clone this repository:
-   ```bash
-   git clone (https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git)
-   ```
-2. Open the Kaggle Notebook or any DuckDB SQL environment.
-3. Load the Olist E-Commerce dataset files and execute the queries directly.
+## 📁 Repository Structure
+```text
+├── Brazilian_Ecommerce_Dashboard.xlsx    # Formatted Excel Dashboard & Charts
+├── brazilian_ecommerce_sql.ipynb         # Interactive Kaggle Notebook execution
+├── queries.sql                           # Full standalone SQL script
+├── dashboard-preview.png                 # High-resolution dashboard screenshot
+└── README.md                             # Executive Project Documentation
+```
 
 ---
 
 ## 👩‍💻 Author & Contact
-
-**Hana Maisarah**  
-*Data Analyst Portfolio Project*
-
-* **LinkedIn:** https://www.linkedin.com/in/hana-maisarah-309a33294/
+**Hana Maisarah** — *Data Analyst*
+* **LinkedIn:** [Hana Maisarah](https://www.linkedin.com/in/hana-maisarah-309a33294/)
 * **Email:** hanamaisarah2004@gmail.com
 
 ---
-
 *If you find this project insightful, feel free to give it a ⭐️ star!*
