@@ -15,6 +15,16 @@ Key findings and business recommendations are extracted to help marketplace oper
 
 ---
 
+## 📂 Repository Structure
+
+```text
+├── brazilian_ecommerce_sql.ipynb  # Interactive Kaggle Notebook with analysis & outputs
+├── queries.sql                    # Clean standalone SQL scripts
+└── README.md                      # Project documentation & business insights
+```
+
+---
+
 ## 📊 Business Questions & SQL Analysis
 
 ### 🟢 1. Overall Revenue & Order Volume
@@ -116,7 +126,21 @@ WHERE order_status = 'delivered';
 ## 🚀 How to Run This Project
 1. Clone this repository:
    ```bash
-   git clone https://github.com/hanamaisrh/Brazilian-Ecommerce-Sales-Analytics-SQL.git
+   git clone [https://github.com/YOUR_USERNAME/Brazilian-Ecommerce-Sales-Analytics-SQL.git](https://github.com/YOUR_USERNAME/Brazilian-Ecommerce-Sales-Analytics-SQL.git)
    ```
 2. Open the Kaggle Notebook or any DuckDB SQL environment.
 3. Load the Olist E-Commerce dataset files and execute the queries directly.
+
+---
+
+## 👩‍💻 Author & Contact
+
+**Hana Maisarah**  
+*Data Analyst Portfolio Project*
+
+* **LinkedIn:** https://www.linkedin.com/in/hana-maisarah-309a33294/
+* **Email:** hanamaisarah2004@gmail.com
+
+---
+
+*If you find this project insightful, feel free to give it a ⭐️ star!*
