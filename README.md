@@ -133,6 +133,34 @@ WHERE order_status = 'delivered';
 
 ---
 
+---
+
+### 6. Regional Sales Distribution (Top Revenue-Generating States)
+
+* **Key Insight:** **São Paulo (SP)** dominates marketplace revenue generation by a massive margin, followed by **Rio de Janeiro (RJ)** and **Minas Gerais (MG)**. This highlights a heavy customer concentration in Brazil's Southeastern region, supporting the strategic need for regional fulfillment hubs.
+
+<details>
+<summary>🔍 <b>View SQL Query</b></summary>
+
+```sql
+SELECT 
+    c.customer_state,
+    ROUND(SUM(i.price), 2) AS total_revenue,
+    COUNT(DISTINCT o.order_id) AS total_orders
+FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_orders_dataset.csv' o
+JOIN '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_items_dataset.csv' i 
+  ON o.order_id = i.order_id
+JOIN '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_customers_dataset.csv' c 
+  ON o.customer_id = c.customer_id
+WHERE o.order_status = 'delivered'
+GROUP BY c.customer_state
+ORDER BY total_revenue DESC
+LIMIT 10;
+```
+</details>
+
+---
+
 ## 💡 Strategic Recommendations
 1. **Regional Fulfillment Hubs:** Establish local hubs in high-delay regions to reduce the **8.11% late delivery rate** and improve overall fulfillment cycles below the 12.5-day benchmark.
 2. **Promote Credit Installments:** Partner with financial institutions for zero-interest installments on high-AOV categories (*Watches & Gifts*, *Health & Beauty*) to sustain transaction volume.
