@@ -21,6 +21,7 @@ This project analyzes **100,000+ real-world e-commerce orders** from the Olist m
 **Executive Dashboard (Microsoft Excel):** Exported cleaned aggregation outputs to Excel to design custom KPI cards, structured bar/line visualizations, and an Executive Insights panel tailored for leadership decision-making.
 
 **Strategic Decision Support:** Translated quantitative findings into actionable business recommendations regarding regional logistics hubs, payment installment options, and cross-selling campaigns.
+
 ---
 
 ## 📊 Executive Dashboard Preview
