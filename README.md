@@ -14,7 +14,13 @@ This project analyzes **100,000+ real-world e-commerce orders** from the Olist m
 │  (100k+ Rows) │     │ (SQL Engine)  │     │ (CTEs & LAG)  │     │  & Dashboard   │     │ Recommendations │
 └───────────────┘     └───────────────┘     └───────────────┘     └────────────────┘     └─────────────────┘
 ```
+**Data Ingestion:** Processed 100,000+ relational e-commerce records from the Olist Brazilian Marketplace dataset across orders, items, payments, customers, and product categories.
 
+**Data Transformation (DuckDB SQL):** Executed high-performance SQL queries utilizing Multi-table JOINs, CTEs, Date Truncations, and Window Functions (LAG) to aggregate revenue, compute MoM growth, and identify fulfillment bottlenecks.
+
+**Executive Dashboard (Microsoft Excel):** Exported cleaned aggregation outputs to Excel to design custom KPI cards, structured bar/line visualizations, and an Executive Insights panel tailored for leadership decision-making.
+
+**Strategic Decision Support:** Translated quantitative findings into actionable business recommendations regarding regional logistics hubs, payment installment options, and cross-selling campaigns.
 ---
 
 ## 📊 Executive Dashboard Preview
