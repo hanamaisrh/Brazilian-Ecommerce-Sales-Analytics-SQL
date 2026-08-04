@@ -71,3 +71,20 @@ SELECT
     ROUND(COUNT(CASE WHEN CAST(order_delivered_customer_date AS TIMESTAMP) > CAST(order_estimated_delivery_date AS TIMESTAMP) THEN 1 END) * 100.0 / COUNT(order_id), 2) AS late_delivery_percentage
 FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_orders_dataset.csv'
 WHERE order_status = 'delivered';
+
+-- =========================================================
+-- Query 6: Top 10 Revenue-Generating States
+-- =========================================================
+SELECT 
+    c.customer_state,
+    ROUND(SUM(i.price), 2) AS total_revenue,
+    COUNT(DISTINCT o.order_id) AS total_orders
+FROM '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_orders_dataset.csv' o
+JOIN '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_order_items_dataset.csv' i 
+  ON o.order_id = i.order_id
+JOIN '/kaggle/input/datasets/organizations/olistbr/brazilian-ecommerce/olist_customers_dataset.csv' c 
+  ON o.customer_id = c.customer_id
+WHERE o.order_status = 'delivered'
+GROUP BY c.customer_state
+ORDER BY total_revenue DESC
+LIMIT 10;
